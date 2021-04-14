@@ -318,11 +318,6 @@ setupFlavorMock = function (client, provider, servers) {
         { 'User-Agent': util.format('nodejs-pkgcloud/%s', pkgcloud.version) })
       .replyWithFile(200, __dirname + '/../../fixtures/hp/flavors.json');
   }
-  else if (provider === 'oneandone') {
-    servers.server
-      .get('/servers/fixed_instance_sizes')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/listFlavors.json');
-  }
 };
 
 setupImagesMock = function (client, provider, servers) {
@@ -361,11 +356,6 @@ setupImagesMock = function (client, provider, servers) {
       .get('/v2/5ACED3DC3AA740ABAA41711243CC6949/images/detail',
         { 'User-Agent': util.format('nodejs-pkgcloud/%s', pkgcloud.version) })
       .replyWithFile(200, __dirname + '/../../fixtures/hp/images.json');
-  }
-  else if (provider === 'oneandone') {
-    servers.server
-      .get('/server_appliances')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/listImages.json');
   }
 };
 
@@ -516,17 +506,6 @@ setupServerMock = function (client, provider, servers) {
         { 'User-Agent': util.format('nodejs-pkgcloud/%s', pkgcloud.version) })
       .replyWithFile(200, __dirname + '/../../fixtures/hp/serverCreated.json');
   }
-  else if (provider === 'oneandone') {
-    servers.server
-      .post('/servers', {
-        name: 'create-test-setWait',
-        hardware: { fixed_instance_size_id: '8C626C1A7005D0D1F527143C413D461E' }
-        , appliance_id: 'A0FAA4587A7CB6BBAA1EA877C844977E'
-      })
-      .replyWithFile(202, __dirname + '/../../fixtures/oneandone/getWaitServer.json')
-      .get('/servers/39AA65F5D5B02FA02D58173094EBAF95')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/getWaitServer.json');
-  }
 };
 
 setupDestroyMock = function (client, provider, servers) {
@@ -550,10 +529,5 @@ setupDestroyMock = function (client, provider, servers) {
     servers.server
       .delete('/v2/droplets/3164444')
       .reply(204);
-  }
-  else if (provider === 'oneandone') {
-    servers.server
-      .delete('/servers/39AA65F5D5B02FA02D58173094EBAF95?keep_ips=false')
-      .replyWithFile(202, __dirname + '/../../fixtures/oneandone/getWaitServer.json');
   }
 };

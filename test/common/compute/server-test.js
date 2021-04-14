@@ -324,11 +324,6 @@ setupImagesMock = function (client, provider, servers) {
       .get('/v2/5ACED3DC3AA740ABAA41711243CC6949/images/detail')
       .replyWithFile(200, __dirname + '/../../fixtures/hp/images.json');
   }
-  else if (provider === 'oneandone') {
-    servers.server
-    .get('/server_appliances')
-    .replyWithFile(200, __dirname + '/../../fixtures/oneandone/listImages.json');
-  }
 };
 
 setupFlavorMock = function (client, provider, servers) {
@@ -351,11 +346,6 @@ setupFlavorMock = function (client, provider, servers) {
     servers.server
       .get('/v2/5ACED3DC3AA740ABAA41711243CC6949/flavors/detail')
       .replyWithFile(200, __dirname + '/../../fixtures/hp/flavors.json');
-  }
-  else if (provider === 'oneandone') {
-    servers.server
-      .get('/servers/fixed_instance_sizes')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/listFlavors.json');
   }
 };
 
@@ -463,17 +453,6 @@ setupServerMock = function (client, provider, servers) {
       .get('/v2/5ACED3DC3AA740ABAA41711243CC6949/servers/5a023de8-957b-4822-ad84-8c7a9ef83c07')
       .replyWithFile(200, __dirname + '/../../fixtures/openstack/serverCreated2.json');
   }
-  else if (provider === 'oneandone') {
-    servers.server
-      .post('/servers', {
-        name: 'create-test-ids2',
-        hardware: {fixed_instance_size_id: '8C626C1A7005D0D1F527143C413D461E'}
-        , appliance_id: 'A0FAA4587A7CB6BBAA1EA877C844977E'
-      })
-      .replyWithFile(202, __dirname + '/../../fixtures/oneandone/getServer.json')
-      .get('/servers/39AA65F5D5B02FA02D58173094EBAF95')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/getServer.json');
-    }
 };
 
 setupGetServersMock = function (client, provider, servers) {
@@ -516,11 +495,6 @@ setupGetServersMock = function (client, provider, servers) {
       .get('/v2/5ACED3DC3AA740ABAA41711243CC6949/servers/detail')
       .replyWithFile(200, __dirname + '/../../fixtures/hp/serverList.json');
   }
-  else if (provider === 'oneandone') {
-    servers.server
-      .get('/servers')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/listServers.json');
-  }
 };
 
 setupGetServerMock = function (client, provider, servers) {
@@ -558,11 +532,6 @@ setupGetServerMock = function (client, provider, servers) {
     servers.server
       .get('/v2/5ACED3DC3AA740ABAA41711243CC6949/servers/5a023de8-957b-4822-ad84-8c7a9ef83c07')
       .replyWithFile(200, __dirname + '/../../fixtures/openstack/serverCreated2.json');
-  }
-  else if (provider === 'oneandone') {
-    servers.server
-      .get('/servers/39AA65F5D5B02FA02D58173094EBAF95')
-      .replyWithFile(200, __dirname + '/../../fixtures/oneandone/getServer.json');
   }
 };
 
