@@ -1,7 +1,7 @@
 {
-  "name": "pkgcloud",
+  "name": "@sansitech/pkgcloud",
   "description": "A provider agnostic cloud library for Node.js",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "contributors": [
     "Ross Kukulinski <ross@kukulinski.com>",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/pkgcloud/pkgcloud.git"
+    "url": "http://github.com/hanyuzhou2006/pkgcloud.git"
   },
   "keywords": [
     "cloud",
@@ -32,7 +32,7 @@
     "helion"
   ],
   "dependencies": {
-    "@google-cloud/storage": "^2.4.3",
+    "@google-cloud/storage": "^5.8.3",
     "async": "^2.6.1",
     "aws-sdk": "^2.382.0",
     "errs": "^0.3.2",
