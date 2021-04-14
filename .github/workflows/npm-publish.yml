@@ -6,6 +6,8 @@ name: Node.js Package
 on:
   release:
     types: [created]
+env:
+  NPM_TOKEN: ${{secrets.npm_token}}
 
 jobs:
   build:
@@ -17,9 +19,6 @@ jobs:
           node-version: 14
       - run: npm ci    
       - run: npm test
-        env:
-          NPM_TOKEN: ${{secrets.npm_token}}
-
 
   publish-npm:
     needs: build
@@ -32,6 +31,5 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm publish
-        env:
-          NPM_TOKEN: ${{secrets.npm_token}}
+
 
